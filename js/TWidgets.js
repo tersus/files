@@ -18,6 +18,7 @@ var TWidgets;
     var TWidget = (function () {
         function TWidget(parent) {
             this.holder = $(document.createElement('div'));
+            this.children = [];
             if(parent instanceof TWidget) {
                 this.setParent(parent);
             } else {
@@ -28,7 +29,7 @@ var TWidgets;
         }
         TWidget.prototype.setParent = function (parent) {
             this.parent = parent;
-            this.parent.addChild(parent);
+            this.parent.addChild(this);
         };
         TWidget.prototype.getHolder = function () {
             return this.holder;
@@ -39,34 +40,55 @@ var TWidgets;
                 this.getHolder().append(child.getHolder());
             }
         };
+        TWidget.prototype.addClass = function (cssClass) {
+            this.getHolder().addClass(cssClass);
+        };
         TWidget.prototype.resize = function (x, y) {
             this.holder.css('width', x + 'px');
             this.holder.css('height', y + 'px');
         };
+        TWidget.prototype.onClick = function (f) {
+            var _this = this;
+            this.holder.click(function (event) {
+                f(_this, event);
+            });
+        };
         return TWidget;
     })();
     TWidgets.TWidget = TWidget;    
-    var Icon = (function (_super) {
-        __extends(Icon, _super);
-        function Icon(parent) {
+    var TLabel = (function (_super) {
+        __extends(TLabel, _super);
+        function TLabel(parent) {
+                _super.call(this, parent);
+            this.addClass('label');
+        }
+        TLabel.prototype.setText = function (text) {
+            this.getHolder().html(text);
+        };
+        return TLabel;
+    })(TWidget);
+    TWidgets.TLabel = TLabel;    
+    var TIcon = (function (_super) {
+        __extends(TIcon, _super);
+        function TIcon(parent) {
                 _super.call(this, parent);
             this.getHolder().addClass(TWidgets.IconClass);
         }
-        Icon.prototype.resize = function (x, y) {
+        TIcon.prototype.resize = function (x, y) {
             _super.prototype.resize.call(this, x, y);
             this.getHolder().css('background-size', x + 'px ' + y + 'px');
         };
-        return Icon;
+        return TIcon;
     })(TWidget);
-    TWidgets.Icon = Icon;    
-    var FileIcon = (function (_super) {
-        __extends(FileIcon, _super);
-        function FileIcon(parent) {
+    TWidgets.TIcon = TIcon;    
+    var TFileIcon = (function (_super) {
+        __extends(TFileIcon, _super);
+        function TFileIcon(parent) {
                 _super.call(this, parent);
             this.getHolder().addClass(TWidgets.FileClass);
         }
-        return FileIcon;
-    })(Icon);
-    TWidgets.FileIcon = FileIcon;    
+        return TFileIcon;
+    })(TIcon);
+    TWidgets.TFileIcon = TFileIcon;    
 })(TWidgets || (TWidgets = {}));
 

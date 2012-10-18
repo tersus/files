@@ -1,4 +1,5 @@
 ///<reference path="jquery.d.ts" />
+///<reference path="FileManager.ts" />
 /*
 Copyright (c) 2012, Tersus
 All rights reserved.
@@ -33,4 +34,11 @@ File manager that lets you browse your files in Tersus.
 
 */
 
+var mainContainer;
+
+$(document).ready(function(){
+
+    mainContainer = new TWidgets.TWidget($('#mainContainer'));
+    FileManager.loadFolderContents("/",mainContainer);
+});
 

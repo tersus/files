@@ -1,0 +1,21 @@
+.icon{
+
+    float: left;
+    width: 40px;
+    height: 40px;
+    background-size: 40px 40px;
+}
+
+.folder{
+
+    background-image:url('../static/folder.png');
+}
+
+.file{
+    background-image:url('../static/file.png');
+}
+
+.label{
+
+    word-wrap:break-word;
+}
