@@ -73,6 +73,8 @@ module FileManager{
 	document.tersus.getFile(folder,(function(container: TWidgets.TWidget){
 	    return function(contents: any[]){
 		
+		container.removeAllChilds();
+
 		for(var i=0;i<contents.length;i++){
 		    
 		    new Resource(container,toFileMetadata(contents[i]));
@@ -96,7 +98,7 @@ module FileManager{
     //A widgets that provides a graphical representation
     //of a file system resource. The resource could
     //be a file or a folder
-    export class Resource extends TWidgets.TWidget{
+    export class Resource extends TWidgets.TLinkWidget{
 
 	private resource : FileMetadata;
 	private resName : TWidgets.TLabel;
@@ -110,13 +112,26 @@ module FileManager{
 
 	    this.resource = resource;
 
-	    if(this.resource.resourceType == ResourceType.FileType)
+	    if(this.resource.resourceType == ResourceType.FileType){
 		this.resIcon = new TWidgets.TFileIcon(this);
+		this.setTarget("_blank");
+
+		//Create a link to the tersus application and add the file name as resource argument
+		this.setUrl("/t/philip-garden?argv="+encodeURI(this.resource.folder + this.resource.name));
+		
+	    }else if(this.resource.resourceType == ResourceType.FolderType){
+		this.resIcon = new TWidgets.TFolderIcon(this);
+		this.onClick(function(obj: Resource, event: JQueryEventObject){
+		    var res = obj.resource;
+		    loadFolderContents(res.folder+res.name+"/",obj.getParent());});
+		//Just to make it clickable, but the click leads nowhere
+		this.setUrl("#");
+	    }
+
 	    
 	    this.resName = new TWidgets.TLabel(this);
 	    this.resName.setText(this.resource.name);
 
-	    
 	}
     }
 }

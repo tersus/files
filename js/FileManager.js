@@ -36,6 +36,7 @@ var FileManager;
     FileManager.loadFolderContents = function (folder, container) {
         document.tersus.getFile(folder, (function (container) {
             return function (contents) {
+                container.removeAllChilds();
                 for(var i = 0; i < contents.length; i++) {
                     new Resource(container, FileManager.toFileMetadata(contents[i]));
                 }
@@ -51,12 +52,23 @@ var FileManager;
             this.resource = resource;
             if(this.resource.resourceType == ResourceType.FileType) {
                 this.resIcon = new TWidgets.TFileIcon(this);
+                this.setTarget("_blank");
+                this.setUrl("/t/philip-garden?argv=" + encodeURI(this.resource.folder + this.resource.name));
+            } else {
+                if(this.resource.resourceType == ResourceType.FolderType) {
+                    this.resIcon = new TWidgets.TFolderIcon(this);
+                    this.onClick(function (obj, event) {
+                        var res = obj.resource;
+                        FileManager.loadFolderContents(res.folder + res.name + "/", obj.getParent());
+                    });
+                    this.setUrl("#");
+                }
             }
             this.resName = new TWidgets.TLabel(this);
             this.resName.setText(this.resource.name);
         }
         return Resource;
-    })(TWidgets.TWidget);
+    })(TWidgets.TLinkWidget);
     FileManager.Resource = Resource;    
 })(FileManager || (FileManager = {}));
 
