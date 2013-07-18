@@ -1,0 +1,67 @@
+{
+    "name": "FileMan",
+    "settings": {},
+    "xdsVersion": "2.2.2",
+    "xdsBuild": 991,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000503,
+    "framework": "ext42",
+    "topInstanceFileMap": {
+        "87915635-0eca-4297-94f2-c5356d983edf": {
+            "paths": [
+                "metadata/view/MainWindow",
+                "app/view/override/MainWindow.js",
+                "app/view/MainWindow.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MainWindow"
+        },
+        "86fbc397-915c-467a-b4b9-a0827c01ea3d": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "cac98efb-5b68-4c7a-b466-4af221331df2": {
+            "paths": [
+                "metadata/view/FileManager",
+                "app/view/override/FileManager.js",
+                "app/view/FileManager.js"
+            ],
+            "className": "FileManager"
+        },
+        "45500324-5260-4589-a15d-315c63b1449e": {
+            "paths": [
+                "metadata/view/Resource",
+                "app/view/override/Resource.js",
+                "app/view/Resource.js"
+            ],
+            "className": "Resource"
+        },
+        "a122134b-cc99-4273-8d58-25bb13dca3de": {
+            "paths": [
+                "metadata/view/FileContainer",
+                "app/view/override/FileContainer.js",
+                "app/view/FileContainer.js"
+            ],
+            "className": "FileContainer"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "a122134b-cc99-4273-8d58-25bb13dca3de",
+            "cac98efb-5b68-4c7a-b466-4af221331df2",
+            "87915635-0eca-4297-94f2-c5356d983edf",
+            "45500324-5260-4589-a15d-315c63b1449e"
+        ],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "86fbc397-915c-467a-b4b9-a0827c01ea3d"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

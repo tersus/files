@@ -1,0 +1,74 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": null,
+        "width": 577,
+        "designer|userClassName": "FileManager",
+        "designer|userAlias": "filemanager"
+    },
+    "designerId": "cac98efb-5b68-4c7a-b466-4af221331df2",
+    "cn": [
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "container|pack": "end",
+                "height": 44,
+                "itemId": "navigationBar",
+                "layout": "hbox"
+            },
+            "designerId": "1ad50d66-6892-4428-9a61-c8c92a82425c",
+            "cn": [
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "itemId": "locationBar",
+                        "layout": "hbox"
+                    },
+                    "designerId": "628df01a-bca2-4dfc-87bb-1ef99cd6b96e"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1,
+                        "itemId": "goButton",
+                        "maxWidth": 100,
+                        "text": "Go"
+                    },
+                    "designerId": "244e874c-a3f3-4096-b874-2c5d0d863d69"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "63376d92-1623-4b9c-8660-4553b9b1f00f",
+            "masterInstanceId": "a122134b-cc99-4273-8d58-25bb13dca3de"
+        }
+    ]
+}

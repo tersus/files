@@ -1,0 +1,47 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "views": [
+            "MainWindow",
+            "FileManager",
+            "Resource",
+            "FileContainer"
+        ],
+        "autoCreateViewport": null,
+        "name": "FileManager"
+    },
+    "designerId": "application",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "launch",
+                "implHandler": [
+                    "var w = Ext.create('FileManager.view.MainWindow',{});\r",
+                    "\r",
+                    "document.FileManager.loadFolder(\"/\",w.getComponent('filePanel').getComponent('files1'));\r",
+                    "\r",
+                    " Ext.create('Ext.container.Viewport', {\r",
+                    "            layout: 'fit',\r",
+                    "            items: [w\r",
+                    "            ]\r",
+                    "        });\r",
+                    "\r",
+                    "a = this;\r",
+                    "console.log(this.self);"
+                ]
+            },
+            "designerId": "4ff25bd4-2ddf-4ef0-b2bb-7171aed027e9"
+        }
+    ]
+}
